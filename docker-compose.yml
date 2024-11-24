@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  facul_api:
+    container_name: facul_api
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    image: facul_api:dev
+    restart: unless-stopped
+    env_file: ./.env/api.env
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    networks:
+      - facul_api-connect
+    ports:
+      - "4444:8080"
+    depends_on:
+      - facul_api-mysql
+
+  facul_api-mysql:
+    container_name: facul_api-mysql
+    image: mysql:latest
+    restart: unless-stopped
+    env_file: ./.env/mysql.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/docker/volumes/FaculApi_MySQL:/var/lib/mysql
+    networks:
+      - facul_api-connect
+    logging:
+      driver: none
+
+networks:
+  facul_api-connect:
+    driver: bridge

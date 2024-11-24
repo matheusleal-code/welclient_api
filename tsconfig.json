@@ -1,0 +1,32 @@
+{
+   "compileOnSave": true,
+   "compilerOptions": {
+       "target": "es5",
+       "module": "commonjs",
+       "outDir": "./dist",
+       "rootDirs": ["./src", "__tests__"],
+       "removeComments": false,
+       "resolveJsonModule": true,
+       "strict": true,
+       "strictPropertyInitialization": false,
+       "moduleResolution": "node",
+       "baseUrl": "./src",
+       "allowSyntheticDefaultImports": true,
+       "esModuleInterop": true,
+       "experimentalDecorators": true,
+       "emitDecoratorMetadata": true,
+       "skipLibCheck": true,
+       "forceConsistentCasingInFileNames": true,
+       "sourceMap": true,
+       "paths": {}
+   },
+   "exclude": [
+       "node_modules",
+       "dist",
+       "types",
+       "__tests__"
+   ],
+   "include": [
+       "src/**/*"
+   ]
+}

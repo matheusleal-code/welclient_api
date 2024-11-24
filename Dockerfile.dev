@@ -1,0 +1,18 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache git
+RUN npm install --location=global npm@8.5.5
+
+# Create app directory
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+COPY ./ .
+RUN npm install
+
+RUN chown -R node /app/node_modules
+
+# Create user node
+USER node
+
+EXPOSE 8080
+CMD [ "npm", "run", "dev:server" ]
